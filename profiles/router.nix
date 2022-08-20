@@ -124,6 +124,15 @@ table ip nat {
     };
   };
 
+  services.fail2ban = {
+    enable = true;
+    maxretry = 5;
+    ignoreIP = [
+      "127.0.0.0/8"
+      "10.1.1.0/8"
+    ];
+  };
+
   # OpenNIC DNS sources. Don't forget to add these to dnsmasq config above!
   networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
 }
