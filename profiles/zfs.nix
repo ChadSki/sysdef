@@ -3,6 +3,7 @@
 {
   boot.supportedFilesystems = [ "zfs" ]; # grub
   boot.initrd.supportedFilesystems = [ "zfs" ]; # initramfs
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
 
   # Erase root on boot
   # boot.initrd.postDeviceCommands = lib.mkAfter ''

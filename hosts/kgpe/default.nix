@@ -19,8 +19,6 @@ in {
     device = "/dev/sda";
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   networking.hostName = "kgpe";
   networking.hostId = "65EFBA84"; # ZFS requirement; TODO: can this be derived somehow?
 
