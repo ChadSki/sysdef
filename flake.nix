@@ -17,7 +17,6 @@
         kgpe = "x86_64-linux";
         nix-apu = "x86_64-linux";
         tulkas = "x86_64-linux";
-        contain = "x86_64-linux";
       };
       makeHome = system: home-manager.lib.homeManagerConfiguration
         {
