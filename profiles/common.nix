@@ -34,7 +34,7 @@
     persistent = true;
     # disable IPv6
     extraConfig =
-''noipv6
+      ''noipv6
 noipv6rs'';
   };
 

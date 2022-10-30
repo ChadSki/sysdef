@@ -41,11 +41,11 @@
     utillinux
 
     # Network utilities
-    dnsutils        # dig, nslookup, etc (bind alias)
+    dnsutils # dig, nslookup, etc (bind alias)
     iputils
-    nmap            # scanning
-    ethtool         # manage NIC settings (offload, NIC feeatures, ...)
-    tcpdump         # view network traffic
+    nmap # scanning
+    ethtool # manage NIC settings (offload, NIC feeatures, ...)
+    tcpdump # view network traffic
     conntrack-tools # view network connection states
   ];
 

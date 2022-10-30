@@ -12,5 +12,5 @@ mkContainer {
     };
   };
 
-  hostConfig = {};
+  hostConfig = { };
 }

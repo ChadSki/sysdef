@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "uas" "sd_mod" ];
@@ -14,13 +15,13 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/707f6638-cf45-42b4-bef1-f5d210906cb1";
+    {
+      device = "/dev/disk/by-uuid/707f6638-cf45-42b4-bef1-f5d210906cb1";
       fsType = "ext4";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/d2f5422d-393d-4f41-8dc0-310eec0f7e3f"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/d2f5422d-393d-4f41-8dc0-310eec0f7e3f"; }];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

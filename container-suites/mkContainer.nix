@@ -7,22 +7,22 @@
   , hostConfig
   ,
   }: lib.recursiveUpdate
-    {
-      # Guest-side
-      config = { config, pkgs, ... }: lib.recursiveUpdate
-        {
-          boot.isContainer = true;
-          networking.useDHCP = lib.mkForce true;
-          networking.firewall.enable = false;
-          environment.systemPackages = [ pkgs.vim ];
-          system.stateVersion = "21.05";
-        }
-        guestConfig;
+  {
+    # Guest-side
+    config = { config, pkgs, ... }: lib.recursiveUpdate
+      {
+        boot.isContainer = true;
+        networking.useDHCP = lib.mkForce true;
+        networking.firewall.enable = false;
+        environment.systemPackages = [ pkgs.vim ];
+        system.stateVersion = "21.05";
+      }
+      guestConfig;
 
-      # Host-side
-      autoStart = true;
-      privateNetwork = true;
-      hostBridge = "br0";
-    }
+    # Host-side
+    autoStart = true;
+    privateNetwork = true;
+    hostBridge = "br0";
+  }
     hostConfig
 )

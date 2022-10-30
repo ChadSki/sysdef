@@ -3,7 +3,8 @@
 
 let
   container-suites = import ../../container-suites { inherit pkgs lib; };
-in {
+in
+{
   # Merge these profiles into this machine
   imports =
     [
@@ -28,7 +29,7 @@ in {
   # Create a bridge interface on the primary ethernet, to support containers using full DHCP.
   # TODO: I would like br0 to use DHCP also but I couldn't get it to work. Static IP for now.
   networking.bridges = { br0 = { interfaces = [ "enp3s0" ]; }; };
-  networking.interfaces.br0.ipv4.addresses = [ { address = "10.1.1.75"; prefixLength = 24; } ];
+  networking.interfaces.br0.ipv4.addresses = [{ address = "10.1.1.75"; prefixLength = 24; }];
   networking.defaultGateway = { address = "10.1.1.1"; interface = "br0"; };
 
   # Plain DHCP for the secondary ethernet port

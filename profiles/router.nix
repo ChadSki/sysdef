@@ -29,7 +29,7 @@
   networking.nftables = {
     enable = true;
     ruleset =
-''table ip filter {
+      ''table ip filter {
   # enable flow offloading for better throughput
   flowtable f {
     hook ingress priority 0;
