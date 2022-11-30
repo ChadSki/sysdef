@@ -31,12 +31,11 @@
     glances
     gptfdisk
     jq
+    ncdu
     nix-index
     nixpkgs-fmt
     parallel
     pciutils
-    skim
-    tealdeer
     usbutils
     utillinux
 
