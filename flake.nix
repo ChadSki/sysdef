@@ -13,12 +13,10 @@
   outputs = { self, ... }@inputs:
     let
       inherit (import ./mk.nix) mkNixosConfig mkDeployNode;
-
-      default = { inherit self inputs; system = "x86_64-linux"; };
       nodes = {
-        kgpe = default;
-        nix-apu = default;
-        tulkas = default;
+        kgpe = { inherit self inputs; system = "x86_64-linux"; };
+        nix-apu = { inherit self inputs; system = "x86_64-linux"; };
+        tulkas = { inherit self inputs; system = "x86_64-linux"; };
       };
     in
     {

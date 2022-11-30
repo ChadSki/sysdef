@@ -1,11 +1,6 @@
 # Defines a Nextcloud+Postgres declarative container combo
-
-{ pkgs, lib, ... }:
-
-let
-  mkContainer = import ./mkContainer.nix { inherit lib; };
-in
-mkContainer {
+{ pkgs, ... }:
+{
   guestConfig = {
     services = {
       nextcloud = {

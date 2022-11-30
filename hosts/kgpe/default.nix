@@ -2,7 +2,8 @@
 { config, pkgs, lib, ... }:
 
 let
-  container-suites = import ../../container-suites { inherit pkgs lib; };
+  inherit (import ../../mk.nix) mkContainer;
+  container-suites = import ../../container-suites;
 in
 {
   # Merge these profiles into this machine
@@ -48,11 +49,8 @@ in
   virtualisation.docker.enable = true;
 
   # This machine hosts the following web apps
-  containers.deluge = container-suites.deluge;
-  #containers.jellyfin = container-suites.jellyfin;
-  #containers.nextcloud = container-suites.nextcloud;
-  containers.samba = container-suites.samba;
-  #containers.sourcehut = container-suites.sourcehut;
+  containers.deluge = (mkContainer { inherit pkgs lib; }) container-suites.deluge;
+  containers.samba = (mkContainer { inherit pkgs lib; }) container-suites.samba;
 
   #boot.binfmt.emulatedSystems = [ "powerpc64le-linux" ];
 

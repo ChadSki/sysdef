@@ -1,11 +1,6 @@
 # Defines a Samba share for my LAN
-
-{ pkgs, lib, ... }:
-
-let
-  mkContainer = import ./mkContainer.nix { inherit lib; };
-in
-mkContainer {
+{ ... }:
+{
   guestConfig = {
     # TODO: generalize this somehow? prepopulate auth instead of needing `smbpasswd`
     users.users.chad = {
