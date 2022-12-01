@@ -21,6 +21,7 @@
     in
     {
       # `nix run . -- .#kgpe` will invoke `deploy` for the `kgpe` machine
+      # `nixos-rebuild build --flake .#kgpe` to build, supports `--show-trace`
       apps = inputs.deploy-rs.apps;
 
       # expected flake schema for NixOSes
