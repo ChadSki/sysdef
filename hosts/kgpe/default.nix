@@ -51,6 +51,7 @@ in
   # This machine hosts the following web apps
   containers.deluge = (mkContainer { inherit pkgs lib; }) container-suites.deluge;
   containers.samba = (mkContainer { inherit pkgs lib; }) container-suites.samba;
+  containers.code-server = (mkContainer { inherit pkgs lib; }) container-suites.code-server;
 
   #boot.binfmt.emulatedSystems = [ "powerpc64le-linux" ];
 
