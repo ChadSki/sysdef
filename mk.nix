@@ -45,7 +45,7 @@ rec {
               boot.isContainer = true;
               networking.useDHCP = lib.mkForce true;
               networking.firewall.enable = false;
-              environment.systemPackages = [ pkgs.vim ];
+              environment.systemPackages = with pkgs; [ vim git ];
               system.stateVersion = "21.05";
             }
             suite.guestConfig;
