@@ -30,31 +30,4 @@ rec {
       };
     };
   };
-
-  mkContainer = { pkgs, lib, ... }: container-suite:
-    let
-      suite = container-suite { inherit pkgs lib; };
-    in (
-      # Merge some system config into the declarative container guest, and
-      # merge some container management details into the host.
-      lib.recursiveUpdate
-        {
-          # Guest-side
-          config = { config, pkgs, ... }: lib.recursiveUpdate
-            {
-              boot.isContainer = true;
-              networking.useDHCP = lib.mkForce true;
-              networking.firewall.enable = false;
-              environment.systemPackages = with pkgs; [ vim git ];
-              system.stateVersion = "21.05";
-            }
-            suite.guestConfig;
-
-          # Host-side
-          autoStart = true;
-          privateNetwork = true;
-          hostBridge = "br0";
-        }
-        suite.hostConfig
-    );
 }

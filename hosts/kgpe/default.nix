@@ -49,9 +49,37 @@ in
   virtualisation.docker.enable = true;
 
   # This machine hosts the following web apps
-  containers.deluge = (mkContainer { inherit pkgs lib; }) container-suites.deluge;
-  containers.samba = (mkContainer { inherit pkgs lib; }) container-suites.samba;
-  containers.code-server = (mkContainer { inherit pkgs lib; }) container-suites.code-server;
+  containers =
+    let
+      mkContainer = suite: (
+        # Merge some system config into the declarative container guest, and
+        # merge some container management details into the host.
+        lib.recursiveUpdate
+          {
+            # Guest-side
+            config = { config, pkgs, ... }: lib.recursiveUpdate
+              {
+                boot.isContainer = true;
+                networking.useDHCP = lib.mkForce true;
+                networking.firewall.enable = false;
+                environment.systemPackages = with pkgs; [ vim git ];
+                system.stateVersion = "21.05";
+              }
+              suite.guestConfig;
+
+            # Host-side
+            autoStart = true;
+            privateNetwork = true;
+            hostBridge = "br0";
+          }
+          suite.hostConfig
+      );
+    in
+    {
+      deluge = mkContainer (container-suites.deluge {});
+      samba = mkContainer (container-suites.samba {});
+      code-server = mkContainer (container-suites.code-server {});
+    };
 
   #boot.binfmt.emulatedSystems = [ "powerpc64le-linux" ];
 
