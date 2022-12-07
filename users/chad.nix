@@ -25,10 +25,10 @@
 
     # Fancies
     bat
-    bottom
     direnv
     dosfstools
     glances
+    gotop
     gptfdisk
     jq
     ncdu
