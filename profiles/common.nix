@@ -52,5 +52,5 @@ noipv6rs'';
     }];
   }];
   programs.fish.enable = true;
-  environment.systemPackages = [ pkgs.vim pkgs.git ];
+  environment.systemPackages = with pkgs; [ vim git tmux wget curl ];
 }
