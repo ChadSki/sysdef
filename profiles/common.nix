@@ -25,7 +25,6 @@
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # TODO: access controls, fail2ban, etc
   services.openssh.enable = true;
 
 
