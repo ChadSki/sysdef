@@ -11,6 +11,7 @@
     binutils
     coreutils
     curl
+    dos2unix
     fd
     file
     git
