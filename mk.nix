@@ -10,7 +10,10 @@ rec {
   mkNixosConfig = hostname: { inputs, system, ... }:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
-      modules = [ ./hosts/${hostname} ];
+      modules = [
+        ./hosts/${hostname}
+        inputs.sops-nix.nixosModules.sops
+      ];
     };
 
   # Deploy-rs deployment targets
