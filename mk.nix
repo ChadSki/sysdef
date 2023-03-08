@@ -13,6 +13,13 @@ rec {
       modules = [
         ./hosts/${hostname}
         inputs.sops-nix.nixosModules.sops
+        ({ pkgs, ... }: {
+          # Register the system nixpkgs for fast local search
+          nix.registry.sys = {
+            from = { type = "indirect"; id = "sys"; };
+            flake = inputs.nixpkgs;
+          };
+        })
       ];
     };
 
