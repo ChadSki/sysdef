@@ -19,7 +19,7 @@
       inherit (import ./mk.nix) mkNixosConfig mkDeployNode;
       nodes = {
         kgpe = { inherit self inputs; system = "x86_64-linux"; };
-        nix-apu = { inherit self inputs; system = "x86_64-linux"; };
+        #nix-apu = { inherit self inputs; system = "x86_64-linux"; };
         tulkas = { inherit self inputs; system = "x86_64-linux"; };
       };
     in
