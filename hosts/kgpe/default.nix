@@ -50,7 +50,7 @@ in
   # Default firewall, explicitly open ports for Nextcloud and Samba
   networking.firewall = {
     allowPing = true;
-    allowedTCPPorts = [ 445 139 ];
+    allowedTCPPorts = [ 445 139 7860 ];
     allowedUDPPorts = [ 137 138 ];
   };
 
