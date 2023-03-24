@@ -25,8 +25,6 @@ in
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
-
-  # Optionally, you may need to select the appropriate driver version for your specific GPU.
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   networking.hostName = "kgpe";
@@ -54,9 +52,9 @@ in
     allowedUDPPorts = [ 137 138 ];
   };
 
+  # These Docker containers do DHCP with their hostname and get their own IP address.
+  # They are bridged through the br0 bridge network interface.
   virtualisation.docker.enable = true;
-
-  # This machine hosts the following web apps
   containers =
     let
       mkContainer = suite: (

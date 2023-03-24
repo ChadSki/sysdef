@@ -1,5 +1,5 @@
 rec {
-  # Home-Manager for `chad` for the target system
+  # Home-Manager for my user for the target system
   mkHome = { inputs, system, ... }: inputs.home-manager.lib.homeManagerConfiguration
     {
       pkgs = inputs.nixpkgs.legacyPackages.${system};
@@ -13,8 +13,8 @@ rec {
       modules = [
         ./hosts/${hostname}
         inputs.sops-nix.nixosModules.sops
-        ({ pkgs, ... }: {
-          # Register the system nixpkgs for fast local search
+        # Register the system nixpkgs for fast local search
+        ({ ... }: {
           nix.registry.sys = {
             from = { type = "indirect"; id = "sys"; };
             flake = inputs.nixpkgs;
@@ -23,7 +23,7 @@ rec {
       ];
     };
 
-  # Deploy-rs deployment targets
+  # Define a deploy-rs deployment target: system name and my user
   mkDeployNode = hostname: { self, inputs, system }: {
     inherit hostname;
     profiles = {
