@@ -6,6 +6,7 @@
   deluge = import ./deluge.nix;
   jellyfin = import ./jellyfin.nix;
   nextcloud = import ./nextcloud.nix;
+  plex = import ./plex.nix;
   samba = import ./samba.nix;
   sourcehut = import ./sourcehut.nix;
 }

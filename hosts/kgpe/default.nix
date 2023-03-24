@@ -85,7 +85,9 @@ in
       deluge = mkContainer (container-suites.deluge {});
       samba = mkContainer (container-suites.samba {});
       code-server = mkContainer (container-suites.code-server {});
+      plex = mkContainer (container-suites.plex {});
     };
+    services.plex.openFirewall = true;
 
   #boot.binfmt.emulatedSystems = [ "powerpc64le-linux" ];
 
