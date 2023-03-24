@@ -3,7 +3,6 @@
 
 let
   inherit (import ../../mk.nix) mkContainer;
-  container-suites = import ../../container-suites;
 in
 {
   # Merge these profiles into this machine
@@ -82,10 +81,10 @@ in
       );
     in
     {
-      deluge = mkContainer (container-suites.deluge {});
-      samba = mkContainer (container-suites.samba {});
-      code-server = mkContainer (container-suites.code-server {});
-      plex = mkContainer (container-suites.plex {});
+      code-server = mkContainer (import ./containers/code-server.nix {});
+      deluge = mkContainer (import ./containers/deluge.nix {});
+      plex = mkContainer (import ./containers/plex.nix {});
+      samba = mkContainer (import ./containers/samba.nix {});
     };
     services.plex.openFirewall = true;
 
