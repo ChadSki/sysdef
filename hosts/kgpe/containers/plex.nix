@@ -17,6 +17,10 @@
         hostPath = "/tank/plex";
         isReadOnly = false;
       };
+      "/mnt/deluge" = {
+        hostPath = "/tank/deluge";
+        isReadOnly = false;
+      };
     };
   };
 }
