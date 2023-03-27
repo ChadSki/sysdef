@@ -44,10 +44,13 @@ in
   # Use NetworkManager, but let containers manage themselves
   networking.networkmanager.unmanaged = [ "interface-name:vb-*" ];
 
-  # Default firewall, explicitly open ports for Nextcloud and Samba
   networking.firewall = {
     allowPing = true;
-    allowedTCPPorts = [ 445 139 7860 ];
+    allowedTCPPorts = [
+      445 139 # samba
+      7860 # plex
+      9090 # cockpit
+    ];
     allowedUDPPorts = [ 137 138 ];
   };
 
@@ -88,7 +91,6 @@ in
       plex = mkContainer (import ./containers/plex.nix {});
       samba = mkContainer (import ./containers/samba.nix {});
     };
-    services.plex.openFirewall = true;
 
   #boot.binfmt.emulatedSystems = [ "powerpc64le-linux" ];
 
