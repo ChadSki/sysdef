@@ -51,6 +51,8 @@ in
     allowedUDPPorts = [ 137 138 ];
   };
 
+  services.cockpit.enable = true;
+
   # These Docker containers do DHCP with their hostname and get their own IP address.
   # They are bridged through the br0 bridge network interface.
   virtualisation.docker.enable = true;
