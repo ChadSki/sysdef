@@ -54,11 +54,14 @@ in
     allowedUDPPorts = [ 137 138 ];
   };
 
+  # TODO: pmlogger service doesn't exist, lacks metrics history
   services.cockpit.enable = true;
 
-  # These Docker containers do DHCP with their hostname and get their own IP address.
-  # They are bridged through the br0 bridge network interface.
+  # For random tasks
   virtualisation.docker.enable = true;
+
+  # These NixOS containers do DHCP with their hostname and get their own IP address.
+  # They are bridged through the br0 bridge network interface.
   containers =
     let
       mkContainer = suite: (
